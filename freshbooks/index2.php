@@ -16,4 +16,11 @@ if(!$client->get($clientId)){
 } else {
 	//investigate populated data
 	print_r($client);
+	echo "<hr>";
+	// Option #1 call via object
+	echo $client->organization."<br>". $client->firstName ." ". $client->lastName." (". $client->clientId .")";
+	// Option #2 convert object to array
+	//$myarr = (array) $client;
+	//echo $myarr['clientId']."<br>";
+	//echo $myarr['lastName'].", ".$myarr['firstName']."<br>";
 }
