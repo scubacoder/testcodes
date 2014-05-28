@@ -1,0 +1,76 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "b34841dd6b5b5e1eab62b273508d7170",
+    "packages": [
+        {
+            "name": "rtconner/freshbooks-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rtconner/freshbooks-api.git",
+                "reference": "5690bec117da73e4c03de9e31ca340eb118dc3c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rtconner/freshbooks-api/zipball/5690bec117da73e4c03de9e31ca340eb118dc3c7",
+                "reference": "5690bec117da73e4c03de9e31ca340eb118dc3c7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Freshbooks\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Conner",
+                    "email": "rtconner@gmail.com",
+                    "homepage": "http://smartersoftware.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "jboesch",
+                    "homepage": "https://github.com/jboesch/FreshBooksRequest-PHP-API"
+                },
+                {
+                    "name": "JasonReading",
+                    "homepage": "http://jasonreading.com"
+                }
+            ],
+            "description": "Wrapper to the FreshBooks API",
+            "keywords": [
+                "api",
+                "freshbooks"
+            ],
+            "time": "2014-03-09 23:22:51"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "rtconner/freshbooks-api": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
