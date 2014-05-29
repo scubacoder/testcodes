@@ -1,26 +1,27 @@
 <?php
+include_once 'include/init.php';
 
-require 'vendor/autoload.php';
+//include particular file for entity you need (Client, Invoice, Category...)
+include_once LIB_PATH . "/FreshBooks/Client.php";
 
-$domain = "https://myrestorationleads.freshbooks.com/api/2.1/xml-in";
-$token = "baa4e5d7780730639d7f21820dc0047e";
+//$clientId = 142596;
+$clientId = 142802;
 
-Freshbooks\FreshBooksApi::init($domain, $token);
+//new Client object
+$client = new FreshBooks_Client();
 
-// Method names are the same as found on the freshbooks API
-$fb = new Freshbooks\FreshBooksApi('client.list');
-
-$fb->post(array(
-	'email' => 'vinceaycardo@outlook.com'
-));
-
-$fb->request();
-
-if ($fb->success()) {
-	echo "successful! The full response is in an array below";
-	var_dump($fb->getResponse());
+//try to get client with client_id $clientId
+if(!$client->get($clientId)){
+	//no data - read error
+	echo $client->lastError;
 } else {
-	echo $fb->getError();
-	var_dump($fb->getResponse());
+	//investigate populated data
+	print_r($client);
+	echo "<hr>";
+	// Option #1 call via object
+	echo $client->organization."<br>". $client->firstName ." ". $client->lastName." (". $client->clientId .")";
+	// Option #2 convert object to array
+	//$myarr = (array) $client;
+	//echo $myarr['clientId']."<br>";
+	//echo $myarr['lastName'].", ".$myarr['firstName']."<br>";
 }
-
