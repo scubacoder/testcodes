@@ -25,6 +25,12 @@ Toggle Column: <div class="btn-group">
 		<th>Dolor</th>
 		<th>Sit</th>
 	</thead>
+	<tfoot>
+		<th>Lorem</th>
+		<th>Ipsum</th>
+		<th>Dolor</th>
+		<th>Sit</th>
+	</tfoot>
 	<tbody>
 		<tr>
 			<td>consectetur </td>
@@ -62,9 +68,18 @@ Toggle Column: <div class="btn-group">
 <script type="text/javascript">
 	$(function(){
 		var table = $('#mytbl').DataTable( {
-			"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+			"dom": 'T<"clear">lfrtip',
+			"stateSave": true,
       "tableTools": {
-          "sSwfPath": "tabletools/swf/copy_csv_xls_pdf.swf"
+          "sSwfPath": "tabletools/swf/copy_csv_xls_pdf.swf",
+          "aButtons": [
+                {
+                    "sExtends": "csv",
+                    "fnClick": function ( nButton, oConfig, flash ) {
+                        this.fnSetText( flash, this.fnGetTableData(oConfig) );
+                    }
+                }
+            ]
       }
     } );
 		
@@ -78,6 +93,23 @@ Toggle Column: <div class="btn-group">
         // Toggle the visibility
         column.visible( ! column.visible() );
     } );
+    
+    // add text input to each footer cell
+    $('#mytbl tfoot th').each( function () {
+        var title = $('#mytbl thead th').eq( $(this).index() ).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    });
+    
+    // Apply the search
+    table.columns().eq( 0 ).each( function ( colIdx ) {
+        $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
+            table
+                .column( colIdx )
+                .search( this.value )
+                .draw();
+        } );
+    } );
+    
 	});
 </script>
 </body>
